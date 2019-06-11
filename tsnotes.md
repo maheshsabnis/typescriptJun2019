@@ -111,3 +111,96 @@
       1. ...<Identityfier>;
    2. Using a = Object.create(b); we create a new 'a' object having same schema of 'b' but 'a' is not havimng any value for schema
    3. Object.assign();     
+
+#=============================================================================
+
+# Object Oriented Programming
+
+1. class
+   1. Members
+      1. default to public
+      2. contains values in it with data types
+   2. Properties
+      1. setter an getter (ES 5 compatible)
+      2. Smart Members, because they contains logic 
+      3. public by default
+      4. read-write properties
+      5. write-only properties
+      6. read-only properties
+   3. methods / functions
+      1. defualt to public
+      2. contains logc to move around the members and properties
+      3. We do not need function keyword for defining functions within a class 
+      4. The return values is set using ':'<Type-Name>
+      5. Must specify 'void' for method that does not return anything
+      6. The 'never' datatype can be used when the function never return any data
+      7. void may be null but never cannot have any value saved in it.
+   4. Declaration scoping for members aka access specifier
+      1. The default is 'public'
+      2. Make members (member/proeprty/function) as private if you do not want them to be accessible put of class
+      3. Use protected when the mmbers is scoped within class and in derived class.
+      4. The 'this' object is used to refer or access class members within the class.
+      5. Constructor parameter improvements
+         1. parameterized ctor
+            1. private scope ctor parameters
+               1. They are trated as private members of class
+            2. public scope ctor parameters
+               1. They are trated as public members of class
+   5. Interitence is defined using 'extends' keyword
+      1. Derived class have access to all proteted and public members of base class using 'this' reference
+      2. The derive class must have ctor with super() call.
+      3. The super() will represent linking between derived class with base class.
+2. Interfaces
+   1. Class Schemas
+   2. Class can implement interface using 'implements' keyword
+   3. Class must implement all methods of interface
+3. Properties
+   1. Smart fields with getter and setter.
+   2. They are in ES 5 transpilation
+   3. By default they produces a warning for set and get method during transpilation
+4. Abstract class
+   1. Class that cannot be instantiated
+   2. Uses keyword 'abstract'
+   3. Methods from Abstract class can be hiddened by derive class with same signeture.
+   4. We can have abstract methods in abstract class.  
+5. Generic Types
+   1. Class
+   2. Member
+   3. Function
+   4. Parameter
+#=============================================================================
+
+# Integrating TypeScript with third party library for client-side development
+
+Using jQuery with typescript
+npm install --save jquery
+
+# ============================================================================
+
+# Using ES 6 Promises
+
+1. The 'Promise<T>' class
+   1. Provides a mechanism to handle long running async calls from the Fron-End script
+   2. Uses 'then()' method to evaluate the successful callback
+   3. Uses 'catch()' method to evaluate the failed callback
+# ===========================================================================
+function getDataPromise() :Promise<any> {
+    return $.ajax({
+        url:'<url>',
+        type:'GET'
+    });
+}
+function getResult(){
+    getDataPromise()
+     .then(function(resp){
+        console.log(`In the getResult method ${JSON.stringify(resp)}`);
+     }).catch(function(error){
+        console.log(error.status);
+     });
+}  
+getResult();
+#============================================================================
+2. The 'async' and 'await' keywords
+   1. The 'async' is a method modifier, thet represents the method contains an asynchromous call e.g. ajax call
+   2. The 'await' must be used for the method call that returns a promise object
+   3. The 'async' method must have atlead one 'await' method call
